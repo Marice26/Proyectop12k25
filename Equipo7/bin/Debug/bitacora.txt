@@ -1,3 +1,8 @@
-[Fri May 09 20:29:53 2025] Usuario: meilyn - Entró a la opción Catálogos
-[Fri May 09 20:30:20 2025] Usuario: meilyn - Salió del menú general
-[Fri May 09 20:30:20 2025] Usuario: meilyn - Cerró sesión desde menú principal
+[Sat May 17 22:50:11 2025] Usuario: meilyn - Entró a la opción Archivo
+[Sat May 17 22:50:13 2025] Usuario: meilyn - Entró a la opción Catálogos
+[Sat May 17 22:50:19 2025] Usuario: meilyn - Entró a la opción Procesos
+[Sat May 17 22:50:41 2025] Usuario: meilyn - Entró a la opción Informes
+[Sat May 17 22:50:44 2025] Usuario: meilyn - Entró a la opción Informes
+[Sun May 18 11:52:53 2025] Usuario: meilyn - Entró a la opción Informes
+[Sun May 18 11:52:55 2025] Usuario: meilyn - Entró a la opción Informes
+[Sun May 18 11:52:58 2025] Usuario: meilyn - Entró a la opción Informes

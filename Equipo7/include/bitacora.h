@@ -2,7 +2,7 @@
 #define BITACORA_H
 
 #include <string>
-
+//es guardar un evento con hora y fecha
 void registrarEvento(const std::string& usuario, const std::string& evento);
 
 #endif
