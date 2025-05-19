@@ -38,6 +38,9 @@ public:
     // Retorna la lista completa de clientes registrados
     static std::vector<Cliente>& obtenerClientes();
 
+    static void guardarClientesBinario();
+    static void cargarClientesBinario();
+
 private:
     // Lista estática que almacena todos los clientes registrados
     static std::vector<Cliente> clientes;

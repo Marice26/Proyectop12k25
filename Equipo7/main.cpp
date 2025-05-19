@@ -64,6 +64,7 @@ void mostrarMenuPrincipal() {
     int opcion;
     do {
         system ("cls");
+        Cliente::cargarClientesBinario();
         cout << "n\t\t\t|------------------------ \n" ;
         cout << "\t\t\t|     MENU PRINCIPAL     | \n";
         cout << "\t\t\t|------------------------- \n" ;

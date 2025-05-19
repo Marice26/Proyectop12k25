@@ -37,6 +37,9 @@ public:
     // Método estático que obtiene la lista de productos
     static std::vector<ProductoInfo>& obtenerProductos();  // Nuevo método para obtener los productos
 
+    void GuardarProductosBinario(const std::string& nombreArchivo);
+    void CargarProductosBinario(const std::string& nombreArchivo);
+
 private:
     // Lista estática que almacena todos los productos
     static std::vector<ProductoInfo> productos;  // Vector estático para contener los productos

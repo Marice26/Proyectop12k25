@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>  // Para formatear la salida en columnas
 #include <cstdlib>  // Para usar system("cls") y limpiar pantalla
+#include <fstream>
 
 using namespace std;
 
@@ -36,7 +37,7 @@ void Cliente::MenuClientes() {
         cout << "\t\t\t 3. ELIMINAR CLIENTE\n";
         cout << "\t\t\t 4. SALIR\n";
         cout << "\t\t\t-------------------------------\n";
-        cout << "\t\t\tIngresa tu opción: ";
+        cout << "\t\t\tIngresa tu opcion: ";
         cin >> opcion;
 
         // Ejecuta la opción seleccionada
@@ -83,11 +84,13 @@ void Cliente::AgregarCliente() {
     // Agrega el nuevo cliente a la lista
     clientes.push_back(Cliente(nombre, telefono, nit, codigo));
     cout << "\t\t\tCliente agregado exitosamente.\n";
+    guardarClientesBinario();
 
     // Espera que el usuario presione ENTER para continuar
     cout << "\nPresione ENTER para regresar al menú...";
     cin.ignore();
     cin.get();
+
 }
 
 // Función para modificar los datos de un cliente existente
@@ -129,6 +132,7 @@ void Cliente::ModificarCliente() {
             }
 
             cout << "\t\t\tCliente modificado exitosamente.\n";
+            guardarClientesBinario();
             break;
         }
     }
@@ -155,6 +159,7 @@ void Cliente::EliminarCliente() {
         if (it->codigo == codigoBuscado) {
             clientes.erase(it);
             cout << "\t\t\tCliente eliminado exitosamente.\n";
+            guardarClientesBinario();
             break;
         }
     }
@@ -196,3 +201,106 @@ void Cliente::MostrarClientes() {
     cin.get();
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Guarda la lista de clientes en un archivo binario
+void Cliente::guardarClientesBinario() {
+    std::ofstream archivo("clientes.bin", std::ios::binary | std::ios::out);
+    if (!archivo) {
+        std::cerr << "Error al abrir el archivo para escritura.\n";
+        return;
+    }
+
+    size_t cantidad = clientes.size();
+    archivo.write(reinterpret_cast<char*>(&cantidad), sizeof(size_t));
+
+    for (const auto& cliente : clientes) {
+        size_t len;
+
+        len = cliente.nombre.size();
+        archivo.write(reinterpret_cast<char*>(&len), sizeof(size_t));
+        archivo.write(cliente.nombre.c_str(), len);
+
+        len = cliente.telefono.size();
+        archivo.write(reinterpret_cast<char*>(&len), sizeof(size_t));
+        archivo.write(cliente.telefono.c_str(), len);
+
+        len = cliente.nit.size();
+        archivo.write(reinterpret_cast<char*>(&len), sizeof(size_t));
+        archivo.write(cliente.nit.c_str(), len);
+
+        len = cliente.codigo.size();
+        archivo.write(reinterpret_cast<char*>(&len), sizeof(size_t));
+        archivo.write(cliente.codigo.c_str(), len);
+    }
+
+    archivo.close();
+}
+
+// Carga la lista de clientes desde un archivo binario
+void Cliente::cargarClientesBinario() {
+    std::ifstream archivo("clientes.bin", std::ios::binary | std::ios::in);
+    if (!archivo) {
+        // No mostrar error si el archivo aún no existe
+        return;
+    }
+
+    clientes.clear();
+    size_t cantidad;
+    archivo.read(reinterpret_cast<char*>(&cantidad), sizeof(size_t));
+
+    for (size_t i = 0; i < cantidad; ++i) {
+        Cliente c;
+        size_t len;
+        char* buffer;
+
+        // nombre
+        archivo.read(reinterpret_cast<char*>(&len), sizeof(size_t));
+        buffer = new char[len + 1];
+        archivo.read(buffer, len);
+        buffer[len] = '\0';
+        c.nombre = buffer;
+        delete[] buffer;
+
+        // telefono
+        archivo.read(reinterpret_cast<char*>(&len), sizeof(size_t));
+        buffer = new char[len + 1];
+        archivo.read(buffer, len);
+        buffer[len] = '\0';
+        c.telefono = buffer;
+        delete[] buffer;
+
+        // nit
+        archivo.read(reinterpret_cast<char*>(&len), sizeof(size_t));
+        buffer = new char[len + 1];
+        archivo.read(buffer, len);
+        buffer[len] = '\0';
+        c.nit = buffer;
+        delete[] buffer;
+
+        // codigo
+        archivo.read(reinterpret_cast<char*>(&len), sizeof(size_t));
+        buffer = new char[len + 1];
+        archivo.read(buffer, len);
+        buffer[len] = '\0';
+        c.codigo = buffer;
+        delete[] buffer;
+
+        clientes.push_back(c);
+    }
+
+    archivo.close();
+}
