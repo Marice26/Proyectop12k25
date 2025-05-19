@@ -1,4 +1,4 @@
-#include "bitacora.h"//MEILYN JULEISY GARCIA LIMA
+#include "bitacora.h"//MEILYN JULEISY GARCIA LIMA 9959-23-17838
 #include <fstream>
 #include <ctime>
 #include <cstring>
