@@ -4,6 +4,5 @@
 #include <string>
 
 void registrarEvento(const std::string& usuario, const std::string& evento);
-
+void mostrarArchivo();
 #endif
-

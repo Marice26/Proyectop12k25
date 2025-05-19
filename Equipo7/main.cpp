@@ -2,8 +2,15 @@
 #include "SistemaVentas.h"
 #include "Login.h"
 #include "bitacora.h"
+#include "Cliente.h"
+#include "Facturacion.h"
+#include "Producto.h"
+#include "vendedores.h"
+#include "venta.h"
 #include <fstream>
+#include <iostream>
 #include <string>
+#include <cstdint>
 
 
 using namespace std;
@@ -12,11 +19,12 @@ using namespace std;
 string usuarioActual; // Para guardar el nombre del usuario bitacora
 
 void mostrarMenuPrincipal();
-void mostrarArchivo();  // Función para mostrar el archivo bitacora.txt
+void MenuCatalogo();
+void MenuProcesos();
+
 int main() {
     int opcion;
     bool accesoPermitido = false;
-
 
     do {
 
@@ -53,41 +61,158 @@ int main() {
 
 
 void mostrarMenuPrincipal() {
-    SistemaVentas sistema;
     int opcion;
     do {
         system ("cls");
-        cout << "\n--- Menu General ---\n";
-        cout << "1. Archivo\n";
-        cout << "2. Catalogos\n";
-        cout << "3. Procesos\n";
-        cout << "4. Informes\n";
-        cout << "5. Salir del sistema\n";
-        cout << "Seleccione una opcion: ";
+        cout << "n\t\t\t|------------------------ \n" ;
+        cout << "\t\t\t|     MENU PRINCIPAL     | \n";
+        cout << "\t\t\t|------------------------- \n" ;
+        cout << "\t\t\t|1. Archivo\n";
+        cout << "\t\t\t|2. Catalogos\n";
+        cout << "\t\t\t|3. Procesos\n";
+        cout << "\t\t\t|4. Informes\n";
+        cout << "\t\t\t|5. Salir del sistema\n";
+        cout << "\t\t\t|Seleccione una opcion: ";
         cin >> opcion;
 
         switch (opcion) {
             case 1:
-                registrarEvento(usuarioActual, "Entro a la opción Archivo");
-                cout<< "sin funcion\n";
-                system("pause");
+                registrarEvento(usuarioActual, "Entro a la opcion Archivo");
+                cout << "Archivo (sin funciones aun).\n";
                 break;
             case 2:
-                registrarEvento(usuarioActual, "Entro a la opción Catálogos");
-                sistema.mostrarMenu();
+                registrarEvento(usuarioActual, "Entro a la opcion Catalogos");
+                MenuCatalogo();
                 break;
             case 3:
-                registrarEvento(usuarioActual, "Entro a la opción Procesos");
-                sistema.realizarVenta();
+                registrarEvento(usuarioActual, "Entro a la opcion Procesos");
+                MenuProcesos();
                 break;
             case 4:
-                registrarEvento(usuarioActual, "Entro a la opción Informes");
-                mostrarArchivo(); // Mostrar contenido de bitacora.txt
-                system ("pause");
+                registrarEvento(usuarioActual, "Entro a la opcion Informes");
+                mostrarArchivo(); // <- Muestra el contenido de bitacora.bin
+                system("pause");
                 break;
             case 5:
-                registrarEvento(usuarioActual, "Salio del menú general");
+                registrarEvento(usuarioActual, "Salio del menu general");
                 cout << "Cerrando sesion...\n";
+                break;
+            default:
+                cout << "Opcion no valida.\n";
+        }
+    } while (opcion != 5);
+}
+
+void MenuProcesos() {
+    SistemaVentas sistemaVentas;
+    int opcion;
+    do {
+        system ("cls");
+        cout << "n\t\t\t|------------------------- \n" ;
+        cout << "\t\t\t|      MENU PROCESOS     | \n";
+        cout << "\t\t\t|------------------------- \n" ;
+        cout << "\t\t\t|1. CLIENTES \n";
+        cout << "\t\t\t|2. VENDEDORES\n";
+        cout << "\t\t\t|3. PRODUCTOS\n";
+        cout << "\t\t\t|4. VENTAS\n";
+        cout << "\t\t\t|5. FACTURACION\n";
+        cout << "\t\t\t|6. REGRESAR AL MENU PRINCIPAL\n";
+        cout << "\t\t\t| Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                registrarEvento(usuarioActual, "Entro a la opcion CLIENTES");
+                {
+                    Cliente Cliente;
+                    Cliente.MenuClientes();
+                }
+                break;
+            case 2:
+                registrarEvento(usuarioActual, "Entro a la opcion VENDEDORES");
+                {
+                    Vendedores Vendedores;
+                    Vendedores.MenuVendedores();
+                }
+                break;
+            case 3:
+                registrarEvento(usuarioActual, "Entro a la opcion PRODUCTOS");
+                {
+                    Producto Producto;
+                    Producto.MenuProducto();
+                }
+                break;
+            case 4:
+                registrarEvento(usuarioActual, "Entro a la opcion VENTAS");
+                {
+                    SistemaVentas SistemaVentas;
+                    SistemaVentas.menuVenta();
+                }
+                break;
+            case 5:
+                registrarEvento(usuarioActual, "Entro a la opcion FACTURACION");
+                {
+                    Facturacion Facturacion;
+                    Facturacion.menuFacturacion(sistemaVentas);
+                }
+                break;
+            case 6:
+                registrarEvento(usuarioActual, "Salio del menu de catalogos");
+                break;
+            default:
+                cout << "Opcion no valida.\n";
+        }
+    } while (opcion != 6);
+}
+
+void MenuCatalogo() {
+    SistemaVentas sistema;
+    int opcion;
+    do {
+        system ("cls");
+        cout << "n\t\t\t|--------------------------- \n" ;
+        cout << "\t\t\t|      MENU CATALOGOS      | \n";
+        cout << "\t\t\t|--------------------------- \n" ;
+        cout << "\t\t\t|1. REGISTRO CLIENTES \n";
+        cout << "\t\t\t|2. REGISTRO VENDEDORES\n";
+        cout << "\t\t\t|3. REGISTRO PRODUCTOS\n";
+        cout << "\t\t\t|4. REGISTRO VENTAS\n";
+        cout << "\t\t\t|5. REGRESAR AL MENU PRINCIPAL\n";
+        cout << "\t\t\t| Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                registrarEvento(usuarioActual, "Entro a la opcion REGISTRO CLIENTES");
+                {
+                    Cliente Cliente;
+                    Cliente.MostrarClientes();
+                }
+                break;
+            case 2:
+                registrarEvento(usuarioActual, "Entro a la opcion REGISTRO VENDEDORES");
+                {
+                    Vendedores Vendedores;
+                    Vendedores.MostrarVendedores();
+                }
+                break;
+            case 3:
+                registrarEvento(usuarioActual, "Entro a la opcion REGISTRO PRODUCTOS");
+                {
+
+                    Producto Producto;
+                    Producto.MostrarProductos();
+                }
+                break;
+            case 4:
+                registrarEvento(usuarioActual, "Entro a la opcion  REGISTRO VENTAS");
+                {
+                    SistemaVentas SistemaVentas;
+                    SistemaVentas.registroVenta();
+                }
+                break;
+            case 5:
+                registrarEvento(usuarioActual, "Salio del menu de procesos");
                 break;
             default:
                 cout << "Opcion no valida.\n";
@@ -98,20 +223,23 @@ void mostrarMenuPrincipal() {
 
 
 void mostrarArchivo() {
-    system("cls");
+    system ("cls");
     std::ifstream archivo("bitacora.bin", std::ios::binary);
     if (!archivo) {
         std::cout << "No se pudo abrir bitacora.bin" << std::endl;
         return;
     }
 
-    std::cout << "=== Contenido de bitacora.bin ===" << std::endl;
-    size_t longitud;
+    std::cout << "\n=== Bitácora de Eventos ===\n" << std::endl;
+    uint32_t longitud;
     std::string mensaje;
 
     while (archivo.read(reinterpret_cast<char*>(&longitud), sizeof(longitud))) {
         mensaje.resize(longitud);
         archivo.read(&mensaje[0], longitud);
+
+        if (!archivo) break; // Validar lectura exitosa
+
         std::cout << mensaje << std::endl;
     }
 

@@ -1,23 +1,28 @@
-#include "bitacora.h"//MEILYN JULEISY GARCIA LIMA
+#include "bitacora.h"
 #include <fstream>
 #include <ctime>
-#include <cstring>
 #include <string>
+#include <iostream>
+#include <cstdint> // Para uint32_t
 
 void registrarEvento(const std::string& usuario, const std::string& evento) {
     std::ofstream archivo("bitacora.bin", std::ios::binary | std::ios::app);
-    if (!archivo) return;
+    if (!archivo) {
+        std::cerr << "No se pudo abrir bitacora.bin para escribir." << std::endl;
+        return;
+    }
 
-    // Obtener hora actual
-    time_t now = time(0);
-    std::string timestamp = std::string(ctime(&now));
-    timestamp.pop_back(); // quitar salto de línea
+    // Obtener fecha y hora actual
+    time_t t = time(nullptr);
+    char fechaHora[100];
+    strftime(fechaHora, sizeof(fechaHora), "%Y-%m-%d %H:%M:%S", localtime(&t));
 
-    // Construir mensaje completo
-    std::string mensaje = usuario + " [" + timestamp + "]: " + evento;
+    std::string mensaje = std::string(fechaHora) + " | Usuario: " + usuario + " | " + evento;
 
-    // Escribir la longitud + contenido
-    size_t longitud = mensaje.size();
+    // Usar uint32_t para longitud fija
+    uint32_t longitud = static_cast<uint32_t>(mensaje.size());
     archivo.write(reinterpret_cast<char*>(&longitud), sizeof(longitud));
     archivo.write(mensaje.c_str(), longitud);
+
+    archivo.close();
 }
