@@ -280,3 +280,6 @@
 [Tue May 20 18:31:37 2025] Usuario:  - SE INICIO SESION 5001
 [Tue May 20 18:31:58 2025] Usuario: julio - Salio del menu general 5002 
 [Tue May 20 18:31:58 2025] Usuario: julio - Cerró sesión desde menú principal
+[Tue May 20 18:57:12 2025] Usuario:  - SE INICIO SESION 5001
+[Tue May 20 18:57:20 2025] Usuario: julio - Salio del menu general 5002 
+[Tue May 20 18:57:20 2025] Usuario: julio - Cerró sesión desde menú principal
