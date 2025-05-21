@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstdlib>  // Para rand()
 #include <ctime>    // Para time()
+#include "encabezado.h"
 
 using namespace std;
 
@@ -30,6 +31,7 @@ int Producto::generarCodigoAleatorio() {
 void Producto::NuevoProducto() {
     system("cls");
     ProductoInfo nuevo;
+    cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual << "\n"; //Marlon De Leon 5001
     cout << "\n\t\t\t--------------------\n";
     cout << "\t\t\t |   NUEVO PRODUCTO  |\n";
     cout << "\t\t\t----------------------\n";
@@ -61,6 +63,7 @@ void Producto::NuevoProducto() {
 // Funcion que muestra todos los productos registrados.
 void Producto::MostrarProductos() {
     system("cls");
+    cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual << "\n"; //Marlon De Leon 5001
     cout << "\n\t\t\t----------------------\n";
     cout << "\t\t\t |   MOSTRAR PRODUCTO  |\n";
     cout << "\t\t\t------------------------\n";
@@ -88,6 +91,7 @@ void Producto::MostrarProductos() {
 void Producto::EliminarProducto() {
     int codigo;
     system("cls");
+    cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual << "\n"; //Marlon De Leon 5001
     cout << "\t\t\t------------------------\n";
     cout << "\t\t\t|   ELIMINAR PRODUCTO  |\n";
     cout << "\t\t\t------------------------\n";
@@ -129,6 +133,7 @@ void Producto::MenuProducto() {
     int opcion;
     do {
         system("cls");
+        cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual << "\n";//Marlon De Leon 5001
         cout << "\t\t\t |----------------------------------|\n";
         cout << "\t\t\t |  SISTEMA DE PRODUCTOS            |\n";
         cout << "\t\t\t |----------------------------------|\n";

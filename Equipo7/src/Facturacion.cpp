@@ -4,9 +4,9 @@
 #include <iostream>
 #include <cstdlib>  // Para rand()
 #include <ctime>    // Para time()
+#include "encabezado.h"
 
 using namespace std;
-
 // Constructor de la clase Facturacion
 Facturacion::Facturacion() {
     // Constructor vacío
@@ -24,6 +24,7 @@ void Facturacion::menuFacturacion(SistemaVentas& sistema) {
     do {
         system("cls");  // Limpia la pantalla
         // Muestra el menú de opciones
+        cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual << "\n"; //Marlon De Leon 5001
         cout << "\n\t\t\t----------------------------\n";
         cout << "\t\t\t |   SISTEMA DE FACTURACION  |\n";
         cout << "\t\t\t  ----------------------------\n";
@@ -52,6 +53,7 @@ void Facturacion::menuFacturacion(SistemaVentas& sistema) {
 // Recibe como parámetro una referencia a un objeto SistemaVentas que contiene las ventas registradas
 void Facturacion::generarFactura(SistemaVentas& sistema) {
     system("cls");
+    cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual << "\n"; //Marlon De Leon 5001
     cout << "\n\t\t\t-------------------------\n";
     cout << "\t\t\t |   DATOS DE LA FACTURA  |\n";
     cout << "\t\t\t  -------------------------\n";
@@ -82,7 +84,7 @@ void Facturacion::generarFactura(SistemaVentas& sistema) {
     Venta* venta = sistema.obtenerVentaPorCodigo(stoi(codVenta));
     if (!venta) {
         cout << "\t\t\tVenta no encontrada.\n";
-        cout << "\t\t\tPresione Enter para regresar al menú de facturación.\n";
+        cout << "\t\t\tPresione Enter para regresar al menu de facturacion.\n";
         cin.ignore();
         cin.get();
         return;
@@ -95,6 +97,7 @@ void Facturacion::generarFactura(SistemaVentas& sistema) {
 // Recibe como parámetros un puntero a Cliente y a Venta
 void Facturacion::mostrarFactura(Cliente* cliente, Venta* venta) {
     system("cls");
+    cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual << "\n";//Marlon De Leon 5001
     cout << "\t\t\t|---------------------------------------------------------------------------|\n";
     cout << "\t\t\t|                                 FACTURA                                   |\n";
     cout << "\t\t\t|---------------------------------------------------------------------------|\n";

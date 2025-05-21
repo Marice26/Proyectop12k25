@@ -5,7 +5,6 @@
 
 #include <string>
 #include <vector>
-
 using namespace std;
 
 // Estructura que define la información de un producto
@@ -36,9 +35,6 @@ public:
 
     // Método estático que obtiene la lista de productos
     static std::vector<ProductoInfo>& obtenerProductos();  // Nuevo método para obtener los productos
-
-    void GuardarProductosBinario(const std::string& nombreArchivo);
-    void CargarProductosBinario(const std::string& nombreArchivo);
 
 private:
     // Lista estática que almacena todos los productos

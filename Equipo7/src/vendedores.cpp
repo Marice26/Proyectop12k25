@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>  // Para formato de impresión (setw, etc.)
 #include <cstdlib>  // Para system("cls")
+#include "encabezado.h"
 
 using namespace std;
 
@@ -31,6 +32,7 @@ void Vendedores::MenuVendedores() {
     do {
         system("cls"); // Limpia la pantalla en cada ciclo
         // Muestra el menú de opciones
+        cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual << "\n"; //Marlon De Leon 5001
         cout << "\t\t\t |---------------------------|\n";
         cout << "\t\t\t |   SISTEMA DE VENDEDORES   |\n";
         cout << "\t\t\t |---------------------------|\n";
@@ -66,6 +68,7 @@ void Vendedores::MenuVendedores() {
 // Método para agregar un nuevo vendedor al sistema.
 void Vendedores::AgregarVendedor() {
     system("cls"); // Limpia la pantalla
+    cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual << "\n"; //Marlon De Leon 5001
     cout << "\t\t\t---------------------\n";
     cout << "\t\t\t |   NUEVO VENDEDOR  |\n";
     cout << "\t\t\t----------------------\n";
@@ -93,6 +96,7 @@ void Vendedores::AgregarVendedor() {
 // Método para modificar la información de un vendedor existente.
 void Vendedores::ModificarVendedor() {
     system("cls"); // Limpia la pantalla
+    cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual << "\n"; //Marlon De Leon 5001
     cout << "\t\t\t------------------------\n";
     cout << "\t\t\t |   MODIFICAR VENDEDOR |\n";
     cout << "\t\t\t------------------------\n";
@@ -140,6 +144,7 @@ void Vendedores::ModificarVendedor() {
 // Método para eliminar un vendedor del sistema.
 void Vendedores::EliminarVendedor() {
     system("cls"); // Limpia la pantalla
+    cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual << "\n"; //Marlon De Leon 5001
     cout << "\t\t\t---------------------\n";
     cout << "\t\t\t |   ELIMINAR VENDEDOR |\n";
     cout << "\t\t\t----------------------\n";
@@ -166,6 +171,7 @@ void Vendedores::EliminarVendedor() {
 // Método para mostrar todos los vendedores registrados en el sistema.
 void Vendedores::MostrarVendedores() {
     system("cls"); // Limpia la pantalla
+    cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual << "\n"; //Marlon De Leon 5001
     cout << "\t\t\t------------------------------\n";
     cout << "\t\t\t|   REGISTRO DE VENDEDORES   |\n";
     cout << "\t\t\t------------------------------\n";

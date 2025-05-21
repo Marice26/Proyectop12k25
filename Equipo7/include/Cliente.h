@@ -1,9 +1,12 @@
+// Maria Celeste Mayen Ibarra 9959-23-3775
+
 #ifndef CLIENTE_H
 #define CLIENTE_H
 
 #include <iostream>
 #include <vector>
 #include <string>
+#include "Cliente.h"
 
 // Clase que representa a un cliente dentro del sistema
 class Cliente {
@@ -37,9 +40,6 @@ public:
 
     // Retorna la lista completa de clientes registrados
     static std::vector<Cliente>& obtenerClientes();
-
-    static void guardarClientesBinario();
-    static void cargarClientesBinario();
 
 private:
     // Lista estática que almacena todos los clientes registrados

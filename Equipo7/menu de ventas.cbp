@@ -40,6 +40,7 @@
 		<Unit filename="include/SistemaVentas.h" />
 		<Unit filename="include/Venta.h" />
 		<Unit filename="include/bitacora.h" />
+		<Unit filename="include/encabezado.h" />
 		<Unit filename="include/login.h" />
 		<Unit filename="include/usuario.h" />
 		<Unit filename="include/vendedores.h" />
@@ -50,6 +51,7 @@
 		<Unit filename="src/SistemaVentas.cpp" />
 		<Unit filename="src/Venta.cpp" />
 		<Unit filename="src/bitacora.cpp" />
+		<Unit filename="src/encabezado.cpp" />
 		<Unit filename="src/login.cpp" />
 		<Unit filename="src/usuario.cpp" />
 		<Unit filename="src/vendedores.cpp" />
